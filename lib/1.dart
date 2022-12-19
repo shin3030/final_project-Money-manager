@@ -39,8 +39,7 @@ class JanuaryPage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<JanuaryPage> {
-
-  bool seletincome=false;
+  bool _seletincome=false;
 
 
   void changeBackground() {
@@ -49,6 +48,8 @@ class _MyHomePageState extends State<JanuaryPage> {
       backgroundnum1= (backgroundnum1 + 1) % backgrounds.length;
     });
   }
+
+
 
 
 
@@ -90,17 +91,34 @@ class _MyHomePageState extends State<JanuaryPage> {
   }
 
 
-
+@override
   void _showAddDialog() {
     showDialog(
+      barrierDismissible: false,
       context: context,
       builder: (BuildContext context) {
-
+      return StatefulBuilder(
+        builder: (BuildContext context, setState) {
         return AlertDialog(
           title: Text('Add Item'),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text('Expense'),
+                  Switch(
+                    value:_seletincome,
+                    onChanged: (Value) {
+                      setState(() {
+                        _seletincome =!_seletincome;
+                      });
+                      print('select:' + _seletincome.toString());
+                    }),
+                  Text('Income'),
+                ],
+              ),
 
               TextField(
                 decoration: InputDecoration(labelText: 'Name'),
@@ -111,21 +129,7 @@ class _MyHomePageState extends State<JanuaryPage> {
                 keyboardType: TextInputType.number,
                 controller: amountController,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text('Expense'),
-                  Switch(
-                    value:seletincome,
-                    onChanged: (newValue) {
-                      setState(() {
-                        seletincome =!seletincome;
-                      });print(seletincome);
-                    },
-                  ),
-                  Text('Income'),
-                ],
-              ),
+
               SizedBox(
                 height: 5,
               ),
@@ -135,7 +139,7 @@ class _MyHomePageState extends State<JanuaryPage> {
                   ElevatedButton(
                     child: Text('Enter'),
                     onPressed: () {
-                      _addItem(nameController.text, int.parse(amountController.text), seletincome);
+                      _addItem(nameController.text, int.parse(amountController.text), _seletincome);
                       Navigator.of(context).pop();
                       nameController.text = '';
                       amountController.text = '';
@@ -144,6 +148,7 @@ class _MyHomePageState extends State<JanuaryPage> {
                   ElevatedButton(
                     child: Text('Cancel'),
                     onPressed: () {
+                      setState((){_seletincome=false;});
                       Navigator.of(context).pop();
                       nameController.text = '';
                       amountController.text = '';
@@ -156,7 +161,7 @@ class _MyHomePageState extends State<JanuaryPage> {
         );
       },
     );
-  }
+  });}
 
   @override
   Widget build(BuildContext context) {

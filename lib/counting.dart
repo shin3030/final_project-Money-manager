@@ -4,7 +4,7 @@ int total_asset=0;
 int total_income=0;
 int total_expense=0;
 
-
+bool svalue=false;
 
 //1月
 List<Map<String, dynamic>> items1 = [];
