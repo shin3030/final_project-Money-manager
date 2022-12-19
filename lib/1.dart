@@ -101,6 +101,7 @@ class _MyHomePageState extends State<JanuaryPage> {
       return StatefulBuilder(
         builder: (BuildContext context, setState) {
         return AlertDialog(
+          backgroundColor: Color.fromARGB(179, 8, 208, 253),
           title: Text('Add Item',),
           content: Column(
             mainAxisSize: MainAxisSize.min,
@@ -110,6 +111,7 @@ class _MyHomePageState extends State<JanuaryPage> {
                 children: [
                   Text('Expense'),
                   Switch(
+                    activeColor: Color.fromARGB(255, 255, 255, 255),
                     value:_seletincome,
                     onChanged: (Value) {
                       setState(() {
@@ -136,6 +138,7 @@ class _MyHomePageState extends State<JanuaryPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ElevatedButton(
+                    style: ElevatedButton.styleFrom(backgroundColor: Color.fromARGB(255, 0, 95, 112),),
                     child: Text('Enter'),
                     onPressed: () {
                       _addItem(nameController.text, int.parse(amountController.text), _seletincome);
@@ -151,6 +154,7 @@ class _MyHomePageState extends State<JanuaryPage> {
                     },
                   ),
                   ElevatedButton(
+                    style: ElevatedButton.styleFrom(backgroundColor: Color.fromARGB(255, 0, 95, 112),),
                     child: Text('Cancel'),
                     onPressed: () {
                       setState((){_seletincome=false;});
@@ -172,8 +176,9 @@ class _MyHomePageState extends State<JanuaryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 9, 120, 122),
         title: Text('1月',
-          style:TextStyle(fontSize: 30) ,),
+          style:TextStyle(fontSize: 30,color:Colors.white,),),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.color_lens),
@@ -198,7 +203,7 @@ class _MyHomePageState extends State<JanuaryPage> {
                         blurRadius: 15.0,
                         spreadRadius: 1.0),
                     BoxShadow(
-                        color: Colors.red,
+                        color:Color.fromARGB(255, 8, 245, 253),
                         offset: Offset(-4.0, -4.0),
                         blurRadius: 15.0,
                         spreadRadius: 1.0),
@@ -226,7 +231,7 @@ class _MyHomePageState extends State<JanuaryPage> {
                                   child: Center(
                                     child: Icon(
                                       Icons.arrow_upward,
-                                      color: Colors.green,
+                                      color: Color.fromARGB(255, 19, 255, 74),
                                     ),
                                   ),
                                 ),
@@ -237,7 +242,7 @@ class _MyHomePageState extends State<JanuaryPage> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text('Income',
-                                        style: TextStyle(color: Colors.grey[500])),
+                                        style: TextStyle(color:Color.fromARGB(255, 19, 255, 74))),
                                     SizedBox(
                                       height: 5,
                                     ),
@@ -260,7 +265,7 @@ class _MyHomePageState extends State<JanuaryPage> {
                                   child: Center(
                                     child: Icon(
                                       Icons.arrow_downward,
-                                      color: Colors.red,
+                                      color: Color.fromARGB(255, 255, 19, 137),
                                     ),
                                   ),
                                 ),
@@ -271,7 +276,7 @@ class _MyHomePageState extends State<JanuaryPage> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text('Expense',
-                                        style: TextStyle(color: Colors.grey[500])),
+                                        style: TextStyle(color:Color.fromARGB(255, 255, 19, 137))),
                                     SizedBox(
                                       height: 5,
                                     ),
@@ -294,12 +299,12 @@ class _MyHomePageState extends State<JanuaryPage> {
                 itemBuilder: (BuildContext context, int index) {
                   Map<String, dynamic> item = items1[index];
                   return ListTile(
-                      title: Text(item['name']),
-                      subtitle: Text(DateFormat.Md().format(DateTime.now())),
-                      trailing: Text(item['amount'].toString()),
+                      title: Text(item['name'],style:TextStyle(color:Color.fromARGB(255, 8, 245, 253)),),
+                      subtitle: Text(DateFormat.Md().format(DateTime.now()),style: TextStyle(color:Color.fromARGB(255, 8, 245, 253)),),
+                      trailing: Text(item['amount'].toString(),style:TextStyle(color:Color.fromARGB(255, 8, 245, 253)),),
                       leading: item['isIncome']
-                          ? Icon(Icons.arrow_upward,color:Colors.green,)
-                          : Icon(Icons.arrow_downward,color:Colors.red),
+                          ? Icon(Icons.arrow_upward,color:Color.fromARGB(255, 19, 255, 74))
+                          : Icon(Icons.arrow_downward,color:Color.fromARGB(255, 255, 19, 137)),
                       onLongPress: () =>_removeItem(index)
                   );
                 },
@@ -308,9 +313,10 @@ class _MyHomePageState extends State<JanuaryPage> {
           ],
         ),),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Color.fromARGB(255, 70, 70, 70),
         onPressed: _showAddDialog,
         tooltip: 'Add Item',
-        child: Icon(Icons.add),
+        child: Icon(Icons.add,color: Color.fromARGB(255, 8, 245, 253),),
       ),
     );
   }
