@@ -91,67 +91,76 @@ class _MyHomePageState extends State<OctoberPage> {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-
-        return AlertDialog(
-          title: Text('Add Item'),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-
-              TextField(
-                decoration: InputDecoration(labelText: 'Name'),
-                controller: nameController,
-              ),
-              TextField(
-                decoration: InputDecoration(labelText: 'Amount'),
-                keyboardType: TextInputType.number,
-                controller: amountController,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        return StatefulBuilder(
+          builder: (BuildContext context, setState) {
+            return AlertDialog(
+              title: Text('Add Item'),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text('Expense'),
-                  Switch(
-                    value:seletincome,
-                    onChanged: (newValue) {
-                      setState(() {
-                        seletincome =!seletincome;
-                      });print(seletincome);
-                    },
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text('Expense'),
+                      Switch(
+                        value:seletincome,
+                        onChanged: (newValue) {
+                          setState(() {
+                            seletincome =!seletincome;
+                          });print(seletincome);
+                        },
+                      ),
+                      Text('Income'),
+                    ],
                   ),
-                  Text('Income'),
+                  TextField(
+                    decoration: InputDecoration(labelText: 'Name'),
+                    controller: nameController,
+                  ),
+                  TextField(
+                    decoration: InputDecoration(labelText: 'Amount'),
+                    keyboardType: TextInputType.number,
+                    controller: amountController,
+                  ),
+
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ElevatedButton(
+                        child: Text('Enter'),
+                        onPressed: () {
+                          _addItem(nameController.text, int.parse(amountController.text), seletincome);
+                          Navigator.of(context).pop();
+                          nameController.text = '';
+                          amountController.text = '';
+                          if(seletincome==true){
+                            setState((){
+                              seletincome=false;
+                            });
+                          };
+                        },
+                      ),
+                      ElevatedButton(
+                        child: Text('Cancel'),
+                        onPressed: () {
+                          setState((){
+                            seletincome=false;
+                          });
+                          Navigator.of(context).pop();
+                          nameController.text = '';
+                          amountController.text = '';
+                        },
+                      ),
+                    ],
+                  ),
                 ],
               ),
-              SizedBox(
-                height: 5,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  ElevatedButton(
-                    child: Text('Enter'),
-                    onPressed: () {
-                      _addItem(nameController.text, int.parse(amountController.text), seletincome);
-                      Navigator.of(context).pop();
-                      nameController.text = '';
-                      amountController.text = '';
-                    },
-                  ),
-                  ElevatedButton(
-                    child: Text('Cancel'),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                      nameController.text = '';
-                      amountController.text = '';
-                    },
-                  ),
-                ],
-              ),
-            ],
-          ),
-        );
-      },
-    );
+            );
+          },
+        );});
   }
 
   @override

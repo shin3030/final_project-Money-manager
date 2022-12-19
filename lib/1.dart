@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:intl/intl.dart';
 import 'package:untitled/counting.dart';
 import 'color.dart';
@@ -113,9 +114,7 @@ class _MyHomePageState extends State<JanuaryPage> {
                     onChanged: (Value) {
                       setState(() {
                         _seletincome =!_seletincome;
-                      });
-                      print('select:' + _seletincome.toString());
-                    }),
+                      });}),
                   Text('Income'),
                 ],
               ),
@@ -143,6 +142,12 @@ class _MyHomePageState extends State<JanuaryPage> {
                       Navigator.of(context).pop();
                       nameController.text = '';
                       amountController.text = '';
+                      if(_seletincome==true){
+                        setState((){
+                          _seletincome=false;
+                        });
+                      };
+
                     },
                   ),
                   ElevatedButton(

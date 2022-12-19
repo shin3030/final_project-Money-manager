@@ -92,22 +92,13 @@ class _MyHomePageState extends State<AprilPage> {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-
+        return StatefulBuilder(
+          builder: (BuildContext context, setState) {
         return AlertDialog(
           title: Text('Add Item'),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-
-              TextField(
-                decoration: InputDecoration(labelText: 'Name'),
-                controller: nameController,
-              ),
-              TextField(
-                decoration: InputDecoration(labelText: 'Amount'),
-                keyboardType: TextInputType.number,
-                controller: amountController,
-              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -123,6 +114,16 @@ class _MyHomePageState extends State<AprilPage> {
                   Text('Income'),
                 ],
               ),
+              TextField(
+                decoration: InputDecoration(labelText: 'Name'),
+                controller: nameController,
+              ),
+              TextField(
+                decoration: InputDecoration(labelText: 'Amount'),
+                keyboardType: TextInputType.number,
+                controller: amountController,
+              ),
+
               SizedBox(
                 height: 5,
               ),
@@ -136,11 +137,19 @@ class _MyHomePageState extends State<AprilPage> {
                       Navigator.of(context).pop();
                       nameController.text = '';
                       amountController.text = '';
+                      if(seletincome==true){
+                        setState((){
+                          seletincome=false;
+                        });
+                      };
                     },
                   ),
                   ElevatedButton(
                     child: Text('Cancel'),
                     onPressed: () {
+                      setState((){
+                        seletincome=false;
+                      });
                       Navigator.of(context).pop();
                       nameController.text = '';
                       amountController.text = '';
@@ -152,7 +161,7 @@ class _MyHomePageState extends State<AprilPage> {
           ),
         );
       },
-    );
+    );});
   }
 
   @override
