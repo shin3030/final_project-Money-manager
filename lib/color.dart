@@ -14,11 +14,12 @@ int backgroundnum9=0;int backgroundnum10=0;int backgroundnum11=0;int backgroundn
 List<BoxDecoration> backgrounds = [
   BoxDecoration(
     gradient: LinearGradient(
-      begin: Alignment.topLeft,
-      end: Alignment.bottomRight,
-      colors: [Colors.red, Colors.blue],
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+      colors: [Color.fromARGB(255, 49, 49, 49), Color.fromARGB(
+          255, 9, 120, 122)],
     ),
-  ),
+  ),//tech
   BoxDecoration(
     gradient: LinearGradient(
       begin: Alignment.topLeft,
@@ -50,27 +51,53 @@ List<BoxDecoration> backgrounds = [
 ];
 
 
-
-//Text design---
-
-final TextStyle Tes1=TextStyle(color: Colors.blue[800]);
-
-int textstyle=0;
-List<TextStyle> tstyle=[
-  TextStyle(color: Colors.red[800]),
-];
-
-
-//Button design---
-
-final ButtonStyle buts1=ElevatedButton.styleFrom(
-  backgroundColor: Colors.grey,
-);
-
-int buttonstyle=0;
+//ElevatedButton design---
 List<ButtonStyle> bstyle=[
-  ElevatedButton.styleFrom(
-    backgroundColor: Colors.transparent,
-  ),
+  ElevatedButton.styleFrom(backgroundColor: Color.fromARGB(255, 0, 95, 112),),//tech
 ];
 
+//AlertDiog design---
+List<Color> stylealert=[
+  Color.fromARGB(179, 8, 208, 253),
+];
+
+//Switch design---
+List<Color> styleswitch=[
+  Color.fromARGB(255, 255, 255, 255),
+];
+
+
+//Card shadow design---
+List<Color> styleshadow=[
+  Color.fromARGB(255, 8, 245, 253),
+];
+
+//appbar design---
+List<Color> styleappbar=[
+  Color.fromARGB(255, 9, 120, 122),
+];
+
+//up arrow and $income design---
+List<Color> styleup=[
+  Color.fromARGB(255, 19, 255, 74),//up箭頭和income的$
+];
+
+//down arrow and $expense design---
+List<Color> styledown=[
+  Color.fromARGB(255, 255, 19, 137),//dowm箭頭和income的$
+];
+
+//listText design---
+List<Color> stylelist=[
+  Color.fromARGB(255, 8, 245, 253),//listtitle(全部)
+];
+
+//FloatButton design---
+List<Color> styleFloatbutton=[
+  Color.fromARGB(255, 70, 70, 70),//FloatingActionButton
+];
+
+//FloatButton icon design---
+List<Color> styleFloaticon=[
+  Color.fromARGB(255, 8, 245, 253),//FloatingActionButto的+
+];
