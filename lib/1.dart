@@ -101,7 +101,7 @@ class _MyHomePageState extends State<JanuaryPage> {
       return StatefulBuilder(
         builder: (BuildContext context, setState) {
         return AlertDialog(
-          title: Text('Add Item'),
+          title: Text('Add Item',),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
