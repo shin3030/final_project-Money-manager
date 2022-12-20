@@ -122,7 +122,7 @@ class _MyHomePageState extends State<JanuaryPage> {
               ),
 
               TextField(
-                decoration: InputDecoration(labelText: 'Name'),
+                decoration: InputDecoration(labelText: 'Name',),
                 controller: nameController,
               ),
               TextField(
@@ -176,7 +176,8 @@ class _MyHomePageState extends State<JanuaryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 9, 120, 122),
+        elevation: 0,
+        backgroundColor: Color.fromARGB(255, 49, 49, 49),
         title: Text('1月',
           style:TextStyle(fontSize: 30,color:Colors.white,),),
         actions: <Widget>[

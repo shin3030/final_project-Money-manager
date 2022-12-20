@@ -298,8 +298,6 @@ class _MyHomePageState extends State<FebruaryPage> {
                           ])
 
                   )
-
-
                 ],
               ),
             ),
